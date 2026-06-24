@@ -1,25 +1,36 @@
+import StatsSection from '../framer/stats_section.jsx'
+
 const stats = [
-  { value: '10+', label: 'Brands Built' },
-  { value: '5', label: 'Industries' },
-  { value: '1 Yr', label: 'Of Execution' },
-  { value: '360°', label: 'Brand Services' },
+  { value: 10, label: 'Brands Built', suffix: '+', decimals: 0 },
+  { value: 5, label: 'Industries', decimals: 0 },
+  { value: 1, label: 'Of Execution', suffix: ' Yr', decimals: 0 },
+  { value: 360, label: 'Brand Services', suffix: '°', decimals: 0 },
 ]
 
 export default function StatsBar() {
   return (
-    <section className="bg-primary font-sans">
-      <div className="mx-auto max-w-7xl px-6 py-10 lg:px-8 lg:py-12">
-        <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 sm:gap-6">
-          {stats.map((stat, index) => (
-            <div
-              key={stat.label}
-              className={`text-center ${index < stats.length - 1 ? 'sm:border-r sm:border-white/10' : ''}`}
-            >
-              <p className="text-3xl font-bold text-secondary sm:text-4xl">{stat.value}</p>
-              <p className="mt-2 text-sm font-medium text-white/70">{stat.label}</p>
-            </div>
-          ))}
-        </div>
+    <section className="bg-gradient-to-r from-primary via-[#0a1638] to-primary font-sans">
+      <div className="max-w-9xl">
+        <StatsSection
+          stats={stats}
+          duration={2}
+          separator={false}
+          triggerOnView
+          divider
+          dividerColor="rgba(30, 69, 255, 0.2)"
+          numberColor="#dfff00"
+          labelColor="rgba(255, 255, 255, 0.7)"
+          background="#000000"
+          paddingTop={40}
+          paddingRight={32}
+          paddingBottom={40}
+          paddingLeft={32}
+          columnGap={150}
+          rowGap={32}
+          minItemWidth={120}
+          font={{ fontSize: 40, fontWeight: 700, fontFamily: 'Montserrat, sans-serif' }}
+          labelFont={{ fontSize: 14, fontWeight: 500, fontFamily: 'Montserrat, sans-serif' }}
+        />
       </div>
     </section>
   )

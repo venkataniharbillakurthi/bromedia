@@ -1,22 +1,25 @@
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import StatsBar from './components/StatsBar'
-import About from './components/About'
-import Projects from './components/Projects'
-import Industries from './components/Industries'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import Layout from './components/Layout'
+import HomePage from './pages/HomePage'
+import ComingSoonPage from './pages/ComingSoonPage'
+import ContactPage from './pages/ContactPage'
+import { routes } from './data/navigation'
 
 function App() {
   return (
-    <div className="min-h-screen font-sans">
-      <Navbar />
-      <main>
-        <Hero />
-        <StatsBar />
-        <About />
-        <Projects />
-        <Industries />
-      </main>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path={routes.home} element={<HomePage />} />
+          <Route path={routes.services} element={<ComingSoonPage />} />
+          <Route path={routes.ourWork} element={<ComingSoonPage />} />
+          <Route path={routes.industries} element={<ComingSoonPage />} />
+          <Route path={routes.about} element={<ComingSoonPage />} />
+          <Route path={routes.contact} element={<ContactPage />} />
+          <Route path="*" element={<Navigate to={routes.home} replace />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 

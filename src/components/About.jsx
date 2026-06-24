@@ -1,7 +1,58 @@
-import ClientMarquee from './ClientMarquee'
+import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
+import GsapScrollRevealText from './GsapScrollRevealText'
+import { routes } from '../data/navigation'
 
 const ABOUT_IMAGE =
   'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80'
+
+const ABOUT_COPY_1 =
+  'Brosmedia is built for businesses that are serious about their brand — and serious about growth. We are a focused agency based in Hyderabad, working across branding, digital marketing, creative production, and paid media. We do not do generic. Every brand we work with gets a strategy built around their industry, their audience, and their goals — and a team that stays hands-on from start to finish.'
+
+const SATISFACTION_COPY =
+  'Client satisfaction rate built on trust, quality service, and proven results.'
+
+const GROWTH_COPY =
+  'Elevate your brand with strategy, creativity, and measurable growth.'
+
+const spring = { type: 'spring', stiffness: 80, damping: 22, mass: 0.8 }
+const easeOut = [0.25, 0.1, 0.25, 1]
+
+const viewport = { once: true, margin: '-80px' }
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 36 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: spring,
+  },
+}
+
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.88 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { ...spring, stiffness: 100 },
+  },
+}
+
+const slideRight = {
+  hidden: { opacity: 0, x: 48 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: spring,
+  },
+}
+
+const stagger = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.12, delayChildren: 0.08 },
+  },
+}
 
 function AboutIcon() {
   return (
@@ -75,73 +126,123 @@ function ArrowUpRight() {
 
 export default function About() {
   return (
-    <section id="about" className="bg-white font-sans">
-      <div className="mx-auto max-w-7xl px-6 pt-16 pb-0 lg:px-8 lg:pt-24 lg:pb-0">
-        {/* Top: 30% stat | 70% copy */}
-        <div className="grid gap-10 border-b border-primary/10 pb-12 lg:grid-cols-[3fr_7fr] lg:gap-12 lg:items-start">
-          <div className="pl-4 sm:pl-8 lg:pl-12 lg:border-r lg:border-primary/10 lg:pr-12">
-            <div className="flex items-center gap-2.5">
+    <section id="about" className="bg-gradient-to-b from-accent/5 via-white to-white font-sans">
+      <div className="mx-auto max-w-7xl px-6 pt-16 pb-0 lg:px-8 lg:pt-24 lg:pb-0 ">
+        <motion.div
+          className="grid gap-10 border-b border-primary/10 pb-12 lg:grid-cols-[3fr_7fr] lg:gap-12 lg:items-start"
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          variants={stagger}
+        >
+          <motion.div
+            className="pl-4 sm:pl-8 lg:pl-12 lg:border-r lg:border-primary/10 lg:pr-12"
+            variants={stagger}
+          >
+            <motion.div className="flex items-center gap-2.5" variants={fadeUp}>
               <AboutIcon />
-              <span className="text-sm font-medium text-primary/70">About Us</span>
-            </div>
-            <p className="mt-8 text-7xl font-bold tracking-tight text-primary sm:text-8xl lg:text-9xl">
+              <span className="text-sm font-medium text-accent">ABOUT US</span>
+            </motion.div>
+            <motion.p
+              className="mt-8 text-7xl font-bold tracking-tight text-primary sm:text-8xl lg:text-9xl"
+              variants={scaleIn}
+            >
               10+
-            </p>
-            <p className="mt-2 text-lg font-semibold text-primary/60 sm:text-xl">Brands Built</p>
-          </div>
+            </motion.p>
+            <motion.p
+              className="mt-2 text-lg font-semibold text-primary/60 sm:text-xl"
+              variants={fadeUp}
+            >
+              Brands Built
+            </motion.p>
+          </motion.div>
 
           <div>
-            <p className="text-base leading-relaxed text-primary/70 sm:text-lg lg:text-xl lg:leading-relaxed">
-              Brosmedia is built for businesses that are serious about their brand — and
-              serious about growth. We are a focused agency based in Hyderabad, working
-              across branding, digital marketing, creative production, and paid media.
-            </p>
-            <p className="mt-5 text-base leading-relaxed text-primary/70 sm:text-lg lg:text-xl lg:leading-relaxed">
-              We do not do generic. Every brand we work with gets a strategy built around
-              their industry, their audience, and their goals — and a team that stays
-              hands-on from start to finish.
-            </p>
+            <GsapScrollRevealText
+              text={ABOUT_COPY_1}
+              className="text-base leading-relaxed text-primary/70 sm:text-lg lg:text-xl lg:leading-relaxed"
+              start="top 90%"
+              end="top 50%"
+            />
           </div>
-        </div>
+        </motion.div>
 
-        {/* Middle: image + stat card */}
-        <div className="grid gap-8 pt-12 pb-0 lg:grid-cols-2 lg:gap-10 lg:items-start">
-          <div className="overflow-hidden rounded-3xl">
-            <img
+        <div className="grid gap-8 pt-12 pb-12 lg:grid-cols-2 lg:gap-10 lg:items-start">
+          <motion.div
+            className="overflow-hidden rounded-3xl"
+            initial={{ opacity: 0, clipPath: 'inset(8% 8% 8% 8% round 24px)' }}
+            whileInView={{ opacity: 1, clipPath: 'inset(0% 0% 0% 0% round 24px)' }}
+            viewport={viewport}
+            transition={{ duration: 0.9, ease: easeOut }}
+          >
+            <motion.img
               src={ABOUT_IMAGE}
               alt="Brosmedia team collaborating"
               className="aspect-[4/3] h-full w-full object-cover lg:aspect-auto lg:min-h-[420px]"
+              initial={{ scale: 1.12 }}
+              whileInView={{ scale: 1 }}
+              viewport={viewport}
+              transition={{ duration: 1.1, ease: easeOut }}
             />
-          </div>
+          </motion.div>
 
           <div className="flex flex-col gap-6">
-            <div className="rounded-3xl border border-primary/5 bg-white p-8 shadow-[0_8px_40px_rgba(0,0,0,0.06)] sm:p-10">
-              <p className="text-5xl font-bold tracking-tight text-primary sm:text-6xl">98%</p>
-              <p className="mt-4 text-sm leading-relaxed text-primary/60 sm:text-base">
-                Client satisfaction rate built on trust, quality service, and proven results.
-              </p>
-              <p className="mt-6 text-base font-semibold leading-relaxed text-primary sm:text-lg">
-                Elevate your brand with strategy, creativity, and measurable growth.
-              </p>
-            </div>
-
-            <a
-              href="#about"
-              className="group flex items-center gap-5"
+            <motion.div
+              className="rounded-3xl border border-accent/10 bg-white p-8 shadow-[0_8px_40px_rgba(30,69,255,0.06)] sm:p-10"
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewport}
+              variants={slideRight}
             >
-              <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-secondary text-primary transition group-hover:brightness-110">
+              <motion.p
+                className="text-5xl font-bold tracking-tight text-primary sm:text-6xl"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={viewport}
+                transition={{ ...spring, delay: 0.15 }}
+              >
+                98%
+              </motion.p>
+              <GsapScrollRevealText
+                text={SATISFACTION_COPY}
+                className="mt-4 text-sm leading-relaxed text-primary/60 sm:text-base"
+                start="top 92%"
+                end="top 55%"
+                stagger={0.1}
+              />
+              <GsapScrollRevealText
+                text={GROWTH_COPY}
+                className="mt-6 text-base font-semibold leading-relaxed text-primary sm:text-lg"
+                start="top 90%"
+                end="top 52%"
+                stagger={0.09}
+              />
+            </motion.div>
+
+            <motion.div
+              className="group flex items-center gap-5"
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewport}
+              variants={fadeUp}
+            >
+              <Link to={routes.about} className="group flex items-center gap-5">
+              <motion.span
+                className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-secondary text-primary transition-transform group-hover:scale-105"
+                whileHover={{ scale: 1.08, rotate: -6 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 18 }}
+              >
                 <ArrowUpRight />
-              </span>
+              </motion.span>
               <span className="leading-tight">
                 <span className="block text-sm font-medium text-primary/60">Learn More</span>
                 <span className="block text-base font-semibold text-primary">About Our Vision</span>
               </span>
-            </a>
+              </Link>
+            </motion.div>
           </div>
         </div>
       </div>
-
-      <ClientMarquee />
     </section>
   )
 }
