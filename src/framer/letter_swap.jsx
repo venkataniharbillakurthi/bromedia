@@ -90,16 +90,22 @@ export default function LetterSwap({
     [letters.length, staggerFrom],
   )
   const resolvedHoverColor = hoverColor ?? color
-  const isActive = variant === 'pingPong' ? isHovered : isHovered
+  const isActive = isHovered
+
+  const activate = () => setIsHovered(true)
+  const deactivate = () => setIsHovered(false)
 
   return (
     <Tag
       className={`relative inline-block ${className}`}
       style={style}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onFocus={() => setIsHovered(true)}
-      onBlur={() => setIsHovered(false)}
+      onMouseEnter={activate}
+      onMouseLeave={deactivate}
+      onFocus={activate}
+      onBlur={deactivate}
+      onTouchStart={activate}
+      onTouchEnd={variant === 'pingPong' ? deactivate : undefined}
+      onTouchCancel={variant === 'pingPong' ? deactivate : undefined}
       onClick={onClick}
     >
       <span className="sr-only">{text}</span>

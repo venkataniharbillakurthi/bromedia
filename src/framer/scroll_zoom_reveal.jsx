@@ -1,6 +1,22 @@
-import { motion, useTransform, useScroll } from 'framer-motion'
-import { useRef } from 'react'
+import { motion, useMotionTemplate, useMotionValue, useTransform, useScroll } from 'framer-motion'
+import { useEffect, useRef } from 'react'
 import LiquidEther from './liquid_ether.jsx'
+
+const MOBILE_BREAKPOINT = 640
+const SCROLL_STOPS = [0, 0.4, 0.7, 1]
+
+function getValueAtProgress(progress, stops, values) {
+  const p = Math.min(1, Math.max(0, progress))
+
+  for (let i = 0; i < stops.length - 1; i += 1) {
+    if (p >= stops[i] && p <= stops[i + 1]) {
+      const t = (p - stops[i]) / (stops[i + 1] - stops[i])
+      return values[i] + (values[i + 1] - values[i]) * t
+    }
+  }
+
+  return values[values.length - 1]
+}
 
 export default function ScrollZoomReveal({
   image,
@@ -8,28 +24,61 @@ export default function ScrollZoomReveal({
   rightText = 'Brosmedia',
   textColor = '#000',
   sideGap = 18,
+  sideGapMobile = 10,
   showLiquidEther = true,
   children,
 }) {
   const ref = useRef(null)
+  const gapPx = useMotionValue(sideGap)
+  const layoutMode = useMotionValue(0)
+
+  useEffect(() => {
+    const updateLayout = () => {
+      const mobile = window.innerWidth < MOBILE_BREAKPOINT
+      layoutMode.set(mobile ? 1 : 0)
+      gapPx.set(mobile ? sideGapMobile : sideGap)
+    }
+
+    updateLayout()
+    window.addEventListener('resize', updateLayout)
+    return () => window.removeEventListener('resize', updateLayout)
+  }, [gapPx, layoutMode, sideGap, sideGapMobile])
 
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start start', 'end end'],
   })
 
-  const width = useTransform(scrollYProgress, [0, 0.4, 0.7, 1], ['8vw', '20vw', '50vw', '100vw'])
-  const height = useTransform(scrollYProgress, [0, 0.4, 0.7, 1], ['10vh', '15vh', '45vh', '100vh'])
-  const borderRadius = useTransform(scrollYProgress, [0, 0.4, 0.7, 1], [40, 40, 40, 0])
+  const width = useTransform([scrollYProgress, layoutMode], ([progress, mobile]) => {
+    const value = getValueAtProgress(
+      progress,
+      SCROLL_STOPS,
+      mobile ? [12, 20, 50, 100] : [8, 20, 50, 100],
+    )
+    return `${value}vw`
+  })
 
-  const imageHalfWidthVw = useTransform(scrollYProgress, [0, 0.4, 0.7, 1], [0.5, 10, 25, 50])
-  const textEdge = useTransform(imageHalfWidthVw, (hw) => `calc(50% + ${hw}vw + ${sideGap}px)`)
+  const height = useTransform([scrollYProgress, layoutMode], ([progress, mobile]) => {
+    const value = getValueAtProgress(
+      progress,
+      SCROLL_STOPS,
+      mobile ? [12, 15, 45, 100] : [10, 15, 45, 100],
+    )
+    return `${value}vh`
+  })
+
+  const borderRadius = useTransform(scrollYProgress, SCROLL_STOPS, [40, 40, 40, 0])
+
+  const imageHalfWidthVw = useTransform([scrollYProgress, layoutMode], ([progress, mobile]) =>
+    getValueAtProgress(progress, SCROLL_STOPS, mobile ? [6, 10, 25, 50] : [0.5, 10, 25, 50]),
+  )
+  const textEdge = useMotionTemplate`calc(50% + ${imageHalfWidthVw}vw + ${gapPx}px)`
 
   const sideTextOpacity = useTransform(scrollYProgress, [0, 0.7, 0.75], [1, 1, 0])
   const sideTextScale = useTransform(scrollYProgress, [0, 0.75, 0.8], [1, 1, 0])
 
   const labelClass =
-    'pointer-events-none absolute top-1/2 text-[20px] font-semibold leading-tight whitespace-nowrap sm:text-[66px] sm:leading-normal'
+    'pointer-events-none absolute top-1/2 text-[18px] font-semibold leading-none whitespace-nowrap sm:text-[66px] sm:leading-normal'
 
   return (
     <section
