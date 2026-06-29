@@ -22,7 +22,7 @@ export default function Hero() {
         <div className="absolute inset-x-0 top-[56%] flex flex-col items-center px-6 text-center sm:top-[54%]">
           <div className="pointer-events-auto mt-6 flex flex-col items-center gap-5 sm:mt-8 sm:flex-row sm:gap-6">
             <SmoothThreeDButton
-              text="Start a Project"
+              text="Start a project"
               link={routes.contact}
               variant="primary"
               buttonWidth={230}

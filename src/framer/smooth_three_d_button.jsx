@@ -42,7 +42,7 @@ function ButtonText({ text, isHovered, isActive, isFocused, colorWhite }) {
           style={{
             display: 'inline-block',
             position: 'relative',
-            marginLeft: index === 4 || char === ' ' ? '5px' : '0',
+            marginLeft: char === ' ' ? '5px' : '0',
           }}
         >
           <span

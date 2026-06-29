@@ -21,10 +21,7 @@ export const clientsTeaser = [
     url: 'https://sashaslimming.com',
     logo: 'https://res.cloudinary.com/dvruqkpqk/image/upload/v1782134725/ChatGPT_Image_Dec_8_2025_10_22_29_AM_q09vhf_we6pis.png',
   },
-  {
-    name: 'Arise Academy',
-    logo: 'https://res.cloudinary.com/dabmwltsh/image/upload/v1777097314/ARISE_LOGO_1-Photoroom_frecmg.png',
-  },
+  
   {
     name: 'Zarivaram',
     url: 'https://zarivaram.vercel.app',
