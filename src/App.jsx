@@ -3,6 +3,7 @@ import Layout from './components/Layout'
 import HomePage from './pages/HomePage'
 import ComingSoonPage from './pages/ComingSoonPage'
 import ContactPage from './pages/ContactPage'
+import ServicesPage from './pages/ServicesPage'
 import { routes } from './data/navigation'
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path={routes.home} element={<HomePage />} />
-          <Route path={routes.services} element={<ComingSoonPage />} />
+          <Route path={routes.services} element={<ServicesPage />} />
           <Route path={routes.ourWork} element={<ComingSoonPage />} />
           <Route path={routes.industries} element={<ComingSoonPage />} />
           <Route path={routes.about} element={<ComingSoonPage />} />

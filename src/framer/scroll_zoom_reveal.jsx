@@ -26,6 +26,8 @@ export default function ScrollZoomReveal({
   sideGap = 18,
   sideGapMobile = 10,
   showLiquidEther = true,
+  backgroundColor = 'transparent',
+  liquidEtherColors = ['#1e45ff', '#dfff00', '#000000'],
   children,
 }) {
   const ref = useRef(null)
@@ -94,13 +96,14 @@ export default function ScrollZoomReveal({
           top: 0,
           height: '100vh',
           overflow: 'hidden',
+          backgroundColor,
         }}
       >
         {showLiquidEther && (
           <LiquidEther
             className="absolute inset-0 z-0 h-full w-full"
             style={{ width: '100%', height: '100%' }}
-            colors={['#1e45ff', '#dfff00', '#000000']}
+            colors={liquidEtherColors}
             mouseForce={20}
             cursorSize={100}
             isViscous
@@ -111,7 +114,7 @@ export default function ScrollZoomReveal({
             isBounce={false}
             autoDemo
             autoSpeed={0.5}
-            autoIntensity={2.2}
+            autoIntensity={1.4}
             takeoverDuration={0.25}
             autoResumeDelay={3000}
             autoRampDuration={0.6}

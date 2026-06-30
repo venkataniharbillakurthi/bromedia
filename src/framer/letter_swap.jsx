@@ -41,8 +41,8 @@ function SwapLetter({
 
   return (
     <span
-      className="inline-block overflow-hidden align-top"
-      style={{ height: '1em', lineHeight: '1em' }}
+      className="inline-block overflow-hidden align-baseline"
+      style={{ height: '1.3em', lineHeight: '1.3em' }}
       aria-hidden={char === ' '}
     >
       <motion.span
@@ -58,10 +58,10 @@ function SwapLetter({
           delay: delay / 1000,
         }}
       >
-        <span className="block h-[1em]" style={{ color }}>
+        <span className="block" style={{ height: '1.3em', lineHeight: '1.3em', color }}>
           {displayChar}
         </span>
-        <span className="block h-[1em]" style={{ color: hoverColor }}>
+        <span className="block" style={{ height: '1.3em', lineHeight: '1.3em', color: hoverColor }}>
           {displayChar}
         </span>
       </motion.span>
@@ -82,6 +82,7 @@ export default function LetterSwap({
   className = '',
   style,
   onClick,
+  active,
 }) {
   const [isHovered, setIsHovered] = useState(false)
   const letters = useMemo(() => text.split(''), [text])
@@ -90,7 +91,8 @@ export default function LetterSwap({
     [letters.length, staggerFrom],
   )
   const resolvedHoverColor = hoverColor ?? color
-  const isActive = isHovered
+  const isControlled = active !== undefined
+  const isActive = isControlled ? active : isHovered
 
   const activate = () => setIsHovered(true)
   const deactivate = () => setIsHovered(false)
@@ -99,13 +101,13 @@ export default function LetterSwap({
     <Tag
       className={`relative inline-block ${className}`}
       style={style}
-      onMouseEnter={activate}
-      onMouseLeave={deactivate}
-      onFocus={activate}
-      onBlur={deactivate}
-      onTouchStart={activate}
-      onTouchEnd={variant === 'pingPong' ? deactivate : undefined}
-      onTouchCancel={variant === 'pingPong' ? deactivate : undefined}
+      onMouseEnter={isControlled ? undefined : activate}
+      onMouseLeave={isControlled ? undefined : deactivate}
+      onFocus={isControlled ? undefined : activate}
+      onBlur={isControlled ? undefined : deactivate}
+      onTouchStart={isControlled ? undefined : activate}
+      onTouchEnd={isControlled || variant !== 'pingPong' ? undefined : deactivate}
+      onTouchCancel={isControlled || variant !== 'pingPong' ? undefined : deactivate}
       onClick={onClick}
     >
       <span className="sr-only">{text}</span>

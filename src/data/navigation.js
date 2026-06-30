@@ -16,10 +16,6 @@ export const navLinks = [
 ]
 
 export const comingSoonPages = {
-  [routes.services]: {
-    title: 'Services',
-    description: 'Our full services breakdown is on the way — branding, digital marketing, creative production, and paid media.',
-  },
   [routes.ourWork]: {
     title: 'Our Work',
     description: 'Case studies and project showcases are coming soon. Until then, explore the brands we have built on the home page.',

@@ -18,6 +18,8 @@ export default function Hero() {
         textColor="#000000"
         sideGap={70}
         sideGapMobile={8}
+        backgroundColor="#ffffff"
+        liquidEtherColors={['#ffffff', '#ffffff', '#ffffff/1.05']}
       >
         <div className="absolute inset-x-0 top-[56%] flex flex-col items-center px-6 text-center sm:top-[54%]">
           <div className="pointer-events-auto mt-6 flex flex-col items-center gap-5 sm:mt-8 sm:flex-row sm:gap-6">
