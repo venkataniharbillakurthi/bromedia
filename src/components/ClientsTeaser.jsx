@@ -39,7 +39,7 @@ function ArrowRight({ className = '' }) {
 
 export default function ClientsTeaser() {
   return (
-    <section id="clients" className="bg-white font-sans">
+    <section id="clients" className="bg-[#f4f4f5] font-sans">
       <div className="relative mx-auto max-w-7xl px-6 pt-16 lg:px-8 lg:pt-24">
       
 

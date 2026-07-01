@@ -383,7 +383,7 @@ export default function FilmStrip({
   motionEnabled = true,
   frameWidth = 180,
   frameHeight = 120,
-  stripColor = '#111111',
+  stripColor = 'rgb(81, 81, 84)',
   perfThickness = 24,
   holeWidth = 16,
   holeHeight = 11,
@@ -596,6 +596,7 @@ export function FilmstripFromClients({ items = [], className = '', style, ...pro
       frameHeight={120}
       speed={36}
       fadeWidth={100}
+      stripColor="rgb(81, 81, 84)"
       {...props}
     />
   )

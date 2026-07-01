@@ -132,16 +132,23 @@ function TestimonialCard({
   statementColor = 'rgb(81, 81, 84)',
   titleColor = 'rgb(134, 134, 139)',
   isPhone = false,
+  compact = false,
 }) {
   return (
-    <div className="flex w-full flex-col gap-8">
-      <div className="flex flex-col gap-6">
+    <div className={`flex w-full flex-col ${compact ? 'gap-5' : 'gap-8'}`}>
+      <div className={`flex flex-col ${compact ? 'gap-4' : 'gap-6'}`}>
         <QuoteIcon color={quoteIconColor} />
         <p
           className="text-balance font-semibold tracking-[-0.03em]"
           style={{
             color: headlineColor,
-            fontSize: isPhone ? '28px' : 'clamp(32px, 4vw, 48px)',
+            fontSize: isPhone
+              ? compact
+                ? '24px'
+                : '28px'
+              : compact
+                ? 'clamp(26px, 3.2vw, 36px)'
+                : 'clamp(32px, 4vw, 48px)',
             lineHeight: 1.15,
           }}
         >
@@ -151,7 +158,7 @@ function TestimonialCard({
           className="text-balance tracking-[-0.01em]"
           style={{
             color: statementColor,
-            fontSize: isPhone ? '16px' : '18px',
+            fontSize: isPhone ? (compact ? '15px' : '16px') : compact ? '16px' : '18px',
             lineHeight: 1.6,
           }}
         >
@@ -159,16 +166,19 @@ function TestimonialCard({
         </p>
       </div>
 
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+      <div className={`flex flex-col sm:flex-row sm:items-center ${compact ? 'gap-2.5 sm:gap-3' : 'gap-3 sm:gap-4'}`}>
         {customerImage ? (
           <img
             src={customerImage}
             alt={customerAlt}
-            className="h-12 w-12 shrink-0 rounded-3xl object-cover"
+            className={`shrink-0 rounded-3xl object-cover ${compact ? 'h-10 w-10' : 'h-12 w-12'}`}
             loading="lazy"
           />
         ) : null}
-        <p className="leading-[1.5em]" style={{ color: titleColor, fontSize: isPhone ? '14px' : '16px' }}>
+        <p
+          className="leading-[1.5em]"
+          style={{ color: titleColor, fontSize: isPhone ? '14px' : compact ? '15px' : '16px' }}
+        >
           {customerTitle}
         </p>
       </div>
@@ -192,6 +202,7 @@ export default function TestimonialReel({
   arrowIconColor = 'rgb(110, 110, 115)',
   hoverArrowButtonColor = 'rgb(210, 210, 215)',
   hoverArrowIconColor = '#000000',
+  compact = false,
   className = '',
   style,
 }) {
@@ -227,7 +238,11 @@ export default function TestimonialReel({
 
   const cardShell = (children) => (
     <div
-      className="overflow-hidden rounded-[28px] px-6 py-8 sm:px-8 sm:py-10 lg:rounded-[32px] lg:px-12 lg:py-14"
+      className={
+        compact
+          ? 'overflow-hidden rounded-2xl px-5 py-6 sm:px-6 sm:py-7 lg:rounded-[24px] lg:px-8 lg:py-9'
+          : 'overflow-hidden rounded-[28px] px-6 py-8 sm:px-8 sm:py-10 lg:rounded-[32px] lg:px-12 lg:py-14'
+      }
       style={{ backgroundColor: cardBackground }}
     >
       {children}
@@ -242,23 +257,23 @@ export default function TestimonialReel({
       {cardShell(
         <>
       {/* Desktop: sidebar + card row */}
-      <div className="hidden items-stretch gap-12 lg:flex">
+      <div className={`hidden items-stretch lg:flex ${compact ? 'gap-8' : 'gap-12'}`}>
         <div className="flex min-w-0 flex-1 flex-col justify-between">
-          <div className="flex flex-col gap-6">
+          <div className={`flex flex-col ${compact ? 'gap-4' : 'gap-6'}`}>
             <p
-              className="text-sm font-bold uppercase tracking-[0.06em]"
+              className={`font-bold uppercase tracking-[0.06em] ${compact ? 'text-xs' : 'text-sm'}`}
               style={{ color: labelColor }}
             >
               {sectionLabel}
             </p>
             <p
-              className="max-w-md text-balance text-2xl tracking-[-0.025em]"
+              className={`max-w-md text-balance tracking-[-0.025em] ${compact ? 'text-lg' : 'text-2xl'}`}
               style={{ color: introColor, lineHeight: 1.28 }}
             >
               {sectionIntroText}
             </p>
           </div>
-          <Navigation {...navProps} className="mt-10" />
+          <Navigation {...navProps} className={compact ? 'mt-6' : 'mt-10'} />
         </div>
 
         <div className="min-w-0 flex-1">
@@ -273,6 +288,7 @@ export default function TestimonialReel({
             >
               <TestimonialCard
                 {...current}
+                compact={compact}
                 quoteIconColor={quoteIconColor}
                 headlineColor={headlineColor}
                 statementColor={statementColor}
@@ -284,17 +300,17 @@ export default function TestimonialReel({
       </div>
 
       {/* Tablet: intro row + full-width card */}
-      <div className="hidden flex-col gap-10 md:flex lg:hidden">
-        <div className="flex items-end justify-between gap-8">
-          <div className="flex min-w-0 flex-1 flex-col gap-5">
+      <div className={`hidden flex-col md:flex lg:hidden ${compact ? 'gap-7' : 'gap-10'}`}>
+        <div className={`flex items-end justify-between ${compact ? 'gap-6' : 'gap-8'}`}>
+          <div className={`flex min-w-0 flex-1 flex-col ${compact ? 'gap-4' : 'gap-5'}`}>
             <p
-              className="text-sm font-bold uppercase tracking-[0.06em]"
+              className={`font-bold uppercase tracking-[0.06em] ${compact ? 'text-xs' : 'text-sm'}`}
               style={{ color: labelColor }}
             >
               {sectionLabel}
             </p>
             <p
-              className="text-balance text-xl tracking-[-0.02em]"
+              className={`text-balance tracking-[-0.02em] ${compact ? 'text-lg' : 'text-xl'}`}
               style={{ color: introColor, lineHeight: 1.35 }}
             >
               {sectionIntroText}
@@ -314,6 +330,7 @@ export default function TestimonialReel({
           >
             <TestimonialCard
               {...current}
+              compact={compact}
               quoteIconColor={quoteIconColor}
               headlineColor={headlineColor}
               statementColor={statementColor}
@@ -324,16 +341,16 @@ export default function TestimonialReel({
       </div>
 
       {/* Phone: intro + card + nav below */}
-      <div className="flex flex-col gap-8 md:hidden">
-        <div className="flex flex-col gap-5">
+      <div className={`flex flex-col md:hidden ${compact ? 'gap-6' : 'gap-8'}`}>
+        <div className={`flex flex-col ${compact ? 'gap-4' : 'gap-5'}`}>
           <p
-            className="text-sm font-bold uppercase tracking-[0.06em]"
+            className={`font-bold uppercase tracking-[0.06em] ${compact ? 'text-xs' : 'text-sm'}`}
             style={{ color: labelColor }}
           >
             {sectionLabel}
           </p>
           <p
-            className="text-balance text-lg tracking-[-0.02em]"
+            className={`text-balance tracking-[-0.02em] ${compact ? 'text-base' : 'text-lg'}`}
             style={{ color: introColor, lineHeight: 1.35 }}
           >
             {sectionIntroText}
@@ -351,6 +368,7 @@ export default function TestimonialReel({
           >
             <TestimonialCard
               {...current}
+              compact={compact}
               quoteIconColor={quoteIconColor}
               headlineColor={headlineColor}
               statementColor={statementColor}
