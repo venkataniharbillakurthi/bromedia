@@ -15,7 +15,7 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-accent/10 bg-gradient-to-b from-accent/[0.04] to-white font-sans">
+    <footer className="bg-gradient-to-b from-accent/[0.04] to-white font-sans">
       <div className="mx-auto max-w-7xl px-6 py-10 lg:px-8 lg:py-12">
         <div className="flex flex-col items-center text-center">
           <Link to={routes.home} className="shrink-0" aria-label="Brosmedia home">

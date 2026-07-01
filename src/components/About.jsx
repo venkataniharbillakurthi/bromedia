@@ -129,14 +129,14 @@ export default function About() {
     <section id="about" className="bg-gradient-to-b from-accent/5 via-white to-white font-sans">
       <div className="mx-auto max-w-7xl px-6 pt-16 pb-0 lg:px-8 lg:pt-24 lg:pb-0 ">
         <motion.div
-          className="grid gap-10 border-b border-primary/10 pb-12 lg:grid-cols-[3fr_7fr] lg:gap-12 lg:items-start"
+          className="grid gap-10 pb-12 lg:grid-cols-[3fr_7fr] lg:gap-12 lg:items-start"
           initial="hidden"
           whileInView="visible"
           viewport={viewport}
           variants={stagger}
         >
           <motion.div
-            className="pl-4 sm:pl-8 lg:pl-12 lg:border-r lg:border-primary/10 lg:pr-12"
+            className="pl-4 sm:pl-8 lg:pl-12 lg:pr-12"
             variants={stagger}
           >
             <motion.div className="flex items-center gap-2.5" variants={fadeUp}>

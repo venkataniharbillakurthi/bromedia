@@ -2,11 +2,12 @@ export const testimonialsIntro = {
   label: 'Client Testimonials',
   headline: 'What our clients say',
   description:
-    'Real feedback from brands we have partnered with — across real estate, healthcare, education, and more.',
+    'Real feedback from brands we have partnered with - across real estate, healthcare, education, and more.',
 }
 
 export const testimonials = [
   {
+    headline: 'A polished presence that actually converts.',
     quote:
       'Brosmedia understood our project positioning from day one. The website, creatives, and lead campaigns gave MB Prime a polished presence that actually converts inquiries.',
     name: 'MB Prime Projects',
@@ -17,8 +18,9 @@ export const testimonials = [
     },
   },
   {
+    headline: 'Our branding finally feels premium.',
     quote:
-      'Professional, responsive, and detail-oriented. Our clinic branding and social content finally feel premium — patients notice the difference before they even walk in.',
+      'Professional, responsive, and detail-oriented. Our clinic branding and social content finally feel premium - patients notice the difference before they even walk in.',
     name: 'Sasha Smiles',
     designation: 'Dental Clinic · Hyderabad',
     image: {
@@ -27,13 +29,14 @@ export const testimonials = [
     },
   },
   {
+    headline: 'Our brand finally looks as premium online as it does in-store.',
     quote:
-      'They handled our academy’s digital presence end to end — from website to campaign creatives. Clear communication, fast turnaround, and results we could measure.',
-    name: 'Arise Academy',
-    designation: 'Education · Coaching Institute',
+      'Brosmedia captured Zarivaram’s identity beautifully — from the website to campaign visuals. Customers now recognise us instantly, and online enquiries have grown steadily since launch.',
+    name: 'Zarivaram',
+    designation: 'Ethnic Wear · Hyderabad',
     image: {
-      src: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80',
-      alt: 'Arise Academy testimonial',
+      src: 'https://res.cloudinary.com/dvnplfu6z/image/upload/v1776921469/logo_1_rwdv9g.png',
+      alt: 'Zarivaram testimonial',
     },
   },
 ]

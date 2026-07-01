@@ -218,7 +218,7 @@ function ServicesHero({ onExplore }) {
 
           <motion.dl
             variants={stagger}
-            className="mx-auto mt-12 grid max-w-3xl grid-cols-2 gap-6 border-t border-primary/10 pt-8 sm:grid-cols-4"
+            className="mx-auto mt-12 grid max-w-3xl grid-cols-2 gap-6 pt-8 sm:grid-cols-4"
           >
             {stats.map((stat, index) => (
               <motion.div key={stat.label} variants={fadeUp} className="text-center">
@@ -239,7 +239,7 @@ function MarqueeStrip() {
   const doubled = [...marqueeItems, ...marqueeItems]
 
   return (
-    <div className="relative overflow-hidden border-y border-white/10 bg-primary py-4">
+    <div className="relative overflow-hidden bg-primary py-4">
       <motion.div
         className="flex w-max gap-8 whitespace-nowrap"
         animate={{ x: ['0%', '-50%'] }}
@@ -507,7 +507,7 @@ function ProcessTimeline() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden border-y border-primary/5 bg-white font-sans"
+      className="relative overflow-hidden bg-white font-sans"
     >
       <div className="pointer-events-none absolute -right-20 top-0 h-80 w-80 rounded-full bg-accent/10 blur-[110px]" />
       <div className="pointer-events-none absolute -left-20 bottom-0 h-80 w-80 rounded-full bg-secondary/25 blur-[110px]" />

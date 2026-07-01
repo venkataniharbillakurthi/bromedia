@@ -7,44 +7,44 @@ export const servicesIntro = {
 
 export const services = [
   {
-    id: 'brand-strategy',
-    navLabel: 'Brand Strategy',
-    name: 'Brand Strategy & Identity',
+    id: 'branding',
+    navLabel: 'Branding',
+    name: 'Branding',
     image:
       'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1600&q=80',
     summary:
-      'Positioning, naming, visual identity, and brand systems that make your business look credible — and memorable — from day one.',
+      'Positioning, naming, visual identity, and brand systems that make your business look credible - and memorable - from day one.',
     highlights: ['Brand positioning', 'Logo & identity systems', 'Brand guidelines', 'Messaging frameworks'],
   },
   {
-    id: 'digital-experience',
-    navLabel: 'Digital Experience',
-    name: 'Digital Experience Design & Development',
-    image:
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=80',
-    summary:
-      'Responsive websites and digital experiences designed to convert — polished on desktop, fast on mobile, built for real users.',
-    highlights: ['Website design & development', 'UI/UX for products', 'Landing pages', 'Performance-focused builds'],
-  },
-  {
-    id: 'content-media',
-    navLabel: 'Content & Media',
-    name: 'Content Creation & Media Production',
-    image:
-      'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1600&q=80',
-    summary:
-      'Photo, video, reels, and campaign creatives that tell your story with clarity and quality — ready for web, social, and ads.',
-    highlights: ['Video & reel production', 'Product & brand shoots', 'Social creatives', 'Campaign assets'],
-  },
-  {
-    id: 'marketing-creative',
+    id: 'marketing',
     navLabel: 'Marketing',
-    name: 'Marketing & Creative Communications',
+    name: 'Marketing',
     image:
       'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=1600&q=80',
     summary:
-      'Paid media, social management, and creative campaigns that keep your brand visible — and your pipeline active.',
+      'Paid media, social management, and creative campaigns that keep your brand visible - and your pipeline active.',
     highlights: ['Meta & Google ads', 'Social media management', 'Campaign strategy', 'Performance reporting'],
+  },
+  {
+    id: 'websites-portals',
+    navLabel: 'Websites & Portals',
+    name: 'Websites & Portals',
+    image:
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=80',
+    summary:
+      'Responsive websites and digital portals designed to convert - polished on desktop, fast on mobile, built for real users.',
+    highlights: ['Website design & development', 'Customer portals', 'Landing pages', 'Performance-focused builds'],
+  },
+  {
+    id: 'business-consulting',
+    navLabel: 'Business Consulting',
+    name: 'Business Consulting',
+    image:
+      'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1600&q=80',
+    summary:
+      'Hands-on strategy and consulting to align your brand, marketing, and growth goals - with clear direction and practical next steps.',
+    highlights: ['Growth strategy', 'Market positioning', 'Go-to-market planning', 'Brand & business audits'],
   },
 ]
 

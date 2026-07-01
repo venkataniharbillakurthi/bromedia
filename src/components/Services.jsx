@@ -1,26 +1,68 @@
-import ImageScroller from '../framer/image_scroller.jsx'
-import { services } from '../data/services'
+import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
+import FluidCardStack from '../framer/fluid_card_stack.jsx'
+import { services, servicesIntro } from '../data/services'
+import { routes } from '../data/navigation'
+
+const spring = { type: 'spring', stiffness: 80, damping: 22, mass: 0.8 }
+const viewport = { once: true, margin: '-80px' }
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0, transition: spring },
+}
+
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
+}
 
 export default function Services() {
   const items = services.map((service) => ({
-    image: { src: service.image, alt: service.name },
-    text: service.name,
+    id: service.id,
+    title: service.name,
+    shortTitle: service.navLabel,
+    description: service.summary,
+    image: service.image,
   }))
 
   return (
-    <section id="services" className="m-0 bg-black p-0 font-sans">
-      <ImageScroller
-        items={items}
-        backgroundColor="#000000"
-        textColor="#ffffff"
-        dockPosition="right"
-        dockInset={20}
-        thumbColor="rgba(255,255,255,0.12)"
-        thumbBlur={10}
-        thumbSize={52}
-        dimInactive
-        inactiveOpacity={0.4}
-      />
+    <section id="services" className="bg-primary font-sans text-white">
+      <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-24">
+        <motion.div
+          className="mb-10 flex flex-col gap-6 sm:mb-12 sm:flex-row sm:items-end sm:justify-between"
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          variants={stagger}
+        >
+          <div className="max-w-xl">
+            <motion.p
+              variants={fadeUp}
+              className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary/90"
+            >
+              {servicesIntro.label}
+            </motion.p>
+            <motion.h2
+              variants={fadeUp}
+              className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl"
+            >
+              {servicesIntro.headline}
+            </motion.h2>
+          </div>
+          <motion.div variants={fadeUp}>
+            <Link
+              to={routes.services}
+              className="inline-flex items-center gap-2 text-sm font-semibold text-white/70 transition hover:text-secondary"
+            >
+              View services
+              <span aria-hidden="true">→</span>
+            </Link>
+          </motion.div>
+        </motion.div>
+
+        <FluidCardStack items={items} />
+      </div>
     </section>
   )
 }

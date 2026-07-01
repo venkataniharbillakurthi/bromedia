@@ -3,7 +3,7 @@ import { industriesStrip, industriesStripIntro } from '../data/industriesStrip'
 
 function Divider() {
   return (
-    <span className="mx-3 shrink-0 text-accent/40 sm:mx-4" aria-hidden="true">
+    <span className="mx-3 shrink-0 text-primary/20 sm:mx-4" aria-hidden="true">
       |
     </span>
   )
@@ -14,8 +14,8 @@ function IndustryItem({ industry, className = '' }) {
     <LetterSwap
       text={industry}
       className={`font-medium ${className}`}
-      color="rgba(255,255,255,0.85)"
-      hoverColor="#dfff00"
+      color="rgba(0,0,0,0.75)"
+      hoverColor="#1e45ff"
       variant="pingPong"
       direction="up"
       staggerFrom="first"
@@ -28,7 +28,7 @@ export default function IndustriesStrip() {
   return (
     <section
       id="industries-strip"
-      className="border-y border-accent/15 bg-gradient-to-r from-primary via-[#0a1638] to-primary font-sans"
+      className="bg-white font-sans"
       aria-label="Industries we serve"
     >
       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-10">
@@ -36,8 +36,8 @@ export default function IndustriesStrip() {
           <LetterSwap
             text={industriesStripIntro.label.toUpperCase()}
             className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] sm:text-xs sm:tracking-[0.2em]"
-            color="rgba(223,255,0,0.8)"
-            hoverColor="#dfff00"
+            color="rgba(30,69,255,0.75)"
+            hoverColor="#1e45ff"
             variant="pingPong"
             direction="up"
             staggerFrom="center"
@@ -50,7 +50,7 @@ export default function IndustriesStrip() {
           {industriesStrip.map((industry) => (
             <li
               key={industry}
-              className={`flex min-h-[2.75rem] items-center justify-center rounded-xl border border-white/10 bg-white/5 px-2 py-2.5 text-center ${
+              className={`flex min-h-[2.75rem] items-center justify-center rounded-xl border border-primary/10 bg-primary/[0.03] px-2 py-2.5 text-center ${
                 industry.length > 16 ? 'col-span-2' : ''
               }`}
             >

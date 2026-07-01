@@ -1,12 +1,10 @@
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
 import { motion } from 'framer-motion'
-import TiltCard from '../framer/tilt_card.jsx'
+import { FilmstripFromClients } from '../framer/filmstrip.jsx'
 import { clientsTeaser, clientsTeaserIntro } from '../data/clientsTeaser'
 import { routes } from '../data/navigation'
 
 const spring = { type: 'spring', stiffness: 80, damping: 22, mass: 0.8 }
-const titleSpring = { type: 'spring', stiffness: 140, damping: 20, mass: 0.7 }
 const viewport = { once: true, margin: '-80px' }
 
 const fadeUp = {
@@ -25,63 +23,6 @@ const stagger = {
   },
 }
 
-function ClientLogoCard({ name, url, logo, index }) {
-  const [hasError, setHasError] = useState(false)
-  const hasLogo = Boolean(logo) && !hasError
-
-  const card = (
-    <div className="flex flex-col gap-2">
-      <div className="h-28 sm:h-32">
-        <TiltCard
-          image={hasLogo ? { src: logo, alt: name } : undefined}
-          objectFit="contain"
-          contentPadding={6}
-          borderRadius={16}
-          backgroundColor="#FFFFFF"
-          tiltFactor={10}
-          hoverScale={1.03}
-          shadowIntensity={0.22}
-          onImageError={() => setHasError(true)}
-        >
-          {!hasLogo && (
-            <span className="px-2 text-center text-xs font-semibold leading-snug text-primary/70 sm:text-sm">
-              {name}
-            </span>
-          )}
-        </TiltCard>
-      </div>
-
-      {hasLogo && (
-        <motion.p
-          className="truncate px-0.5 text-center text-[0.68rem] font-semibold text-primary/55 sm:text-[0.72rem]"
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={{ ...titleSpring, delay: index * 0.04 }}
-        >
-          {name}
-        </motion.p>
-      )}
-    </div>
-  )
-
-  if (url) {
-    return (
-      <a
-        href={url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block"
-        aria-label={`Visit ${name}`}
-      >
-        {card}
-      </a>
-    )
-  }
-
-  return card
-}
-
 function ArrowRight({ className = '' }) {
   return (
     <svg
@@ -98,14 +39,16 @@ function ArrowRight({ className = '' }) {
 
 export default function ClientsTeaser() {
   return (
-    <section id="clients" className="border-t border-accent/10 bg-accent/[0.03] font-sans">
-      <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-24">
+    <section id="clients" className="bg-white font-sans">
+      <div className="relative mx-auto max-w-7xl px-6 pt-16 lg:px-8 lg:pt-24">
+      
+
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={viewport}
           variants={stagger}
-          className="max-w-3xl"
+          className="relative z-10 max-w-3xl"
         >
           <motion.p
             variants={fadeUp}
@@ -125,43 +68,48 @@ export default function ClientsTeaser() {
           >
             {clientsTeaserIntro.description}
           </motion.p>
+
+          <motion.div variants={fadeUp} className="mt-6 md:hidden">
+            <Link
+              to={routes.ourWork}
+              className="group inline-flex items-center gap-2 text-sm font-semibold text-primary transition hover:text-accent"
+            >
+              See All Our Work
+              <ArrowRight className="transition group-hover:translate-x-1" />
+            </Link>
+          </motion.div>
         </motion.div>
 
         <motion.div
-          className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 lg:mt-16 lg:grid-cols-5"
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={viewport}
-          variants={stagger}
-        >
-          {clientsTeaser.map((client, index) => (
-            <motion.div key={client.name} variants={fadeUp}>
-              <ClientLogoCard
-                name={client.name}
-                url={client.url}
-                logo={client.logo}
-                index={index}
-              />
-            </motion.div>
-          ))}
-        </motion.div>
-
-        <motion.div
-          className="mt-12 lg:mt-16"
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewport}
-          variants={fadeUp}
+          transition={{ ...spring, delay: 0.25 }}
+          className="absolute right-6 top-1/2 z-[5] hidden -translate-y-1/2 md:block lg:right-8"
         >
           <Link
             to={routes.ourWork}
-            className="group inline-flex items-center gap-2 text-sm font-semibold text-primary transition hover:text-accent sm:text-base"
+            className="group inline-flex items-center gap-3"
           >
-            See All Our Work
-            <ArrowRight className="transition group-hover:translate-x-1" />
+            <span className="whitespace-nowrap text-sm font-semibold tracking-wide text-primary/25 transition group-hover:text-accent lg:text-base">
+              See All Our Work
+            </span>
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-primary/10 bg-white text-primary/40 shadow-sm transition group-hover:border-accent/30 group-hover:bg-accent/10 group-hover:text-accent">
+              <ArrowRight className="transition group-hover:translate-x-0.5" />
+            </span>
           </Link>
         </motion.div>
       </div>
+
+      <motion.div
+        className="mt-10 w-full pb-16 lg:mt-14 lg:pb-24"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={viewport}
+        transition={spring}
+      >
+        <FilmstripFromClients items={clientsTeaser} speed={36} />
+      </motion.div>
     </section>
   )
 }

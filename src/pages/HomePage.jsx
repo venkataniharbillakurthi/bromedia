@@ -13,9 +13,10 @@ export default function HomePage() {
       <StatsBar />
       <About />
       <Services />
+      <IndustriesStrip />
       <ClientsTeaser />
       <Testimonials />
-      <IndustriesStrip />
+      
     </>
   )
 }
