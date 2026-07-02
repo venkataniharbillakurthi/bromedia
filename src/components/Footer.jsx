@@ -48,7 +48,7 @@ export default function Footer() {
                     text={link.label}
                     className="text-sm font-medium sm:text-base"
                     color="rgba(0,0,0,0.8)"
-                    hoverColor="#1e45ff"
+                    hoverColor="#dfff00"
                   />
                 </li>
               ))}

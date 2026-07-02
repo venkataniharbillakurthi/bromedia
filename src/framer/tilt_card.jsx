@@ -11,7 +11,7 @@ export default function TiltCard({
   perspective = 1000,
   borderRadius = 16,
   backgroundColor = '#FFFFFF',
-  shadowColor = 'rgba(30, 69, 255, 0.15)',
+  shadowColor = 'rgba(223, 255, 0, 0.15)',
   shadowIntensity = 0.18,
   transitionDuration = 0.2,
   hoverScale = 1.04,
@@ -99,7 +99,7 @@ export default function TiltCard({
           rotateX: tiltValues.x,
           rotateY: tiltValues.y,
           boxShadow: isHovered
-            ? `0 22px 44px -14px rgba(30, 69, 255, ${shadowIntensity})`
+            ? `0 22px 44px -14px rgba(223, 255, 0, ${shadowIntensity})`
             : `0 10px 30px -10px ${shadowColor}`,
         }}
         transition={{ duration: transitionDuration, ease: 'easeOut' }}

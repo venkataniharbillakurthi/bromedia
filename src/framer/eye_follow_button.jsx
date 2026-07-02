@@ -14,7 +14,7 @@ export default function EyeFollowButton({
   onClick,
   openInNewTab = false,
   buttonColor = '#000000',
-  hoverColor = '#1e45ff',
+  hoverColor = '#dfff00',
   textColor = '#ffffff',
   pupilColor = '#000000',
   eyeColor = '#ffffff',

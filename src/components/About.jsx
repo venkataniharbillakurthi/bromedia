@@ -57,7 +57,7 @@ const stagger = {
 function AboutIcon() {
   return (
     <svg
-      className="h-6 w-6 shrink-0 text-primary"
+      className="h-6 w-6 shrink-0 text-accent"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="none"
@@ -126,7 +126,7 @@ function ArrowUpRight() {
 
 export default function About() {
   return (
-    <section id="about" className="bg-gradient-to-b from-accent/5 via-white to-white font-sans">
+    <section id="about" className="bg-black font-sans text-white">
       <div className="mx-auto max-w-7xl px-6 pt-16 pb-0 lg:px-8 lg:pt-24 lg:pb-0 ">
         <motion.div
           className="grid gap-10 pb-12 lg:grid-cols-[3fr_7fr] lg:gap-12 lg:items-start"
@@ -144,13 +144,13 @@ export default function About() {
               <span className="text-sm font-medium text-accent">ABOUT US</span>
             </motion.div>
             <motion.p
-              className="mt-8 text-7xl font-bold tracking-tight text-primary sm:text-8xl lg:text-9xl"
+              className="mt-8 text-7xl font-bold tracking-tight text-white sm:text-8xl lg:text-9xl"
               variants={scaleIn}
             >
               10+
             </motion.p>
             <motion.p
-              className="mt-2 text-lg font-semibold text-primary/60 sm:text-xl"
+              className="mt-2 text-lg font-semibold text-white/60 sm:text-xl"
               variants={fadeUp}
             >
               Brands Built
@@ -160,7 +160,7 @@ export default function About() {
           <div>
             <GsapScrollRevealText
               text={ABOUT_COPY_1}
-              className="text-base leading-relaxed text-primary/70 sm:text-lg lg:text-xl lg:leading-relaxed"
+              className="text-base leading-relaxed text-white/70 sm:text-lg lg:text-xl lg:leading-relaxed"
               start="top 90%"
               end="top 50%"
             />
@@ -188,14 +188,14 @@ export default function About() {
 
           <div className="flex flex-col gap-6">
             <motion.div
-              className="rounded-3xl border border-accent/10 bg-white p-8 shadow-[0_8px_40px_rgba(30,69,255,0.06)] sm:p-10"
+              className="rounded-3xl border border-white/10 bg-white/5 p-8 sm:p-10"
               initial="hidden"
               whileInView="visible"
               viewport={viewport}
               variants={slideRight}
             >
               <motion.p
-                className="text-5xl font-bold tracking-tight text-primary sm:text-6xl"
+                className="text-5xl font-bold tracking-tight text-white sm:text-6xl"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={viewport}
@@ -205,14 +205,14 @@ export default function About() {
               </motion.p>
               <GsapScrollRevealText
                 text={SATISFACTION_COPY}
-                className="mt-4 text-sm leading-relaxed text-primary/60 sm:text-base"
+                className="mt-4 text-sm leading-relaxed text-white/60 sm:text-base"
                 start="top 92%"
                 end="top 55%"
                 stagger={0.1}
               />
               <GsapScrollRevealText
                 text={GROWTH_COPY}
-                className="mt-6 text-base font-semibold leading-relaxed text-primary sm:text-lg"
+                className="mt-6 text-base font-semibold leading-relaxed text-white sm:text-lg"
                 start="top 90%"
                 end="top 52%"
                 stagger={0.09}
@@ -235,8 +235,8 @@ export default function About() {
                 <ArrowUpRight />
               </motion.span>
               <span className="leading-tight">
-                <span className="block text-sm font-medium text-primary/60">Learn More</span>
-                <span className="block text-base font-semibold text-primary">About Our Vision</span>
+                <span className="block text-sm font-medium text-white/60">Learn More</span>
+                <span className="block text-base font-semibold text-white">About Our Vision</span>
               </span>
               </Link>
             </motion.div>

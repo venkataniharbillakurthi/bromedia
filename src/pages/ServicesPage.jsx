@@ -76,7 +76,7 @@ function HeadlineTitle() {
         className="block"
         active={hovered}
         color="#000000"
-        hoverColor="#1e45ff"
+        hoverColor="#dfff00"
         staggerFrom="first"
         {...swapBase}
       />
@@ -86,7 +86,7 @@ function HeadlineTitle() {
         className="block"
         active={hovered}
         color="#000000"
-        hoverColor="#1e45ff"
+        hoverColor="#dfff00"
         staggerFrom="first"
         {...swapBase}
       />
@@ -96,7 +96,7 @@ function HeadlineTitle() {
           as="span"
           active={hovered}
           color="#000000"
-          hoverColor="#1e45ff"
+          hoverColor="#dfff00"
           staggerFrom="first"
           {...swapBase}
         />
@@ -449,7 +449,7 @@ function ProcessStepCard({ item, index, isLast = false }) {
       <motion.div
         whileHover={{ y: -8 }}
         transition={spring}
-        className="group relative min-w-0 flex-1 overflow-hidden rounded-3xl border border-primary/10 bg-white p-6 shadow-[0_16px_50px_rgba(30,69,255,0.07)] sm:flex-none sm:p-8"
+        className="group relative min-w-0 flex-1 overflow-hidden rounded-3xl border border-primary/10 bg-white p-6 shadow-[0_16px_50px_rgba(223,255,0,0.07)] sm:flex-none sm:p-8"
       >
         <motion.div
           className="absolute inset-x-0 top-0 h-1 origin-left bg-gradient-to-r from-accent via-secondary to-accent"
@@ -515,7 +515,7 @@ function ProcessTimeline() {
         className="pointer-events-none absolute inset-0 opacity-[0.35]"
         style={{
           backgroundImage:
-            'linear-gradient(rgba(30,69,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(30,69,255,0.04) 1px, transparent 1px)',
+            'linear-gradient(rgba(223,255,0,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(223,255,0,0.04) 1px, transparent 1px)',
           backgroundSize: '56px 56px',
         }}
       />

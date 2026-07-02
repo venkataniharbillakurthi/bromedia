@@ -27,7 +27,7 @@ export default function ScrollZoomReveal({
   sideGapMobile = 10,
   showLiquidEther = true,
   backgroundColor = 'transparent',
-  liquidEtherColors = ['#1e45ff', '#dfff00', '#000000'],
+  liquidEtherColors = ['#dfff00', '#b8cc00', '#000000'],
   children,
 }) {
   const ref = useRef(null)

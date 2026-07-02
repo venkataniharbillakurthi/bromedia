@@ -117,8 +117,8 @@ export default function DynamicNavbar() {
                         className={`block rounded-xl px-4 py-3 text-sm font-medium ${
                           isActive ? 'bg-accent/5' : ''
                         }`}
-                        color={isActive ? '#1e45ff' : 'rgba(0,0,0,0.75)'}
-                        hoverColor="#1e45ff"
+                        color={isActive ? '#dfff00' : 'rgba(0,0,0,0.75)'}
+                        hoverColor="#dfff00"
                         onClick={collapse}
                       />
                     </li>

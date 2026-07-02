@@ -28,7 +28,7 @@ export default function Testimonial3D({
   quoteColor = '#4b5563',
   arrowBackground = '#141414',
   arrowForeground = '#f1f1f7',
-  arrowHoverBackground = '#1e45ff',
+  arrowHoverBackground = '#dfff00',
   nameFont = { fontSize: '28px', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: '1.2em' },
   designationFont = { fontSize: '18px', fontWeight: 500, letterSpacing: '-0.01em', lineHeight: '1.3em' },
   quoteFont = { fontSize: '18px', fontWeight: 400, letterSpacing: '-0.01em', lineHeight: '1.75em' },
@@ -269,7 +269,7 @@ export default function Testimonial3D({
                   height: '100%',
                   objectFit: 'cover',
                   borderRadius: '1.5rem',
-                  boxShadow: '0 10px 30px rgba(30, 69, 255, 0.15)',
+                  boxShadow: '0 10px 30px rgba(223, 255, 0, 0.15)',
                   ...getImageStyle(index),
                 }}
                 loading="lazy"

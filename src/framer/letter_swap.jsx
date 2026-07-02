@@ -142,8 +142,8 @@ export function LetterSwapLink({
   rel,
   ...swapProps
 }) {
-  const resolvedColor = color ?? (active ? '#1e45ff' : 'currentColor')
-  const resolvedHoverColor = hoverColor ?? '#1e45ff'
+  const resolvedColor = color ?? (active ? '#dfff00' : 'currentColor')
+  const resolvedHoverColor = hoverColor ?? '#dfff00'
 
   const swap = (
     <LetterSwap

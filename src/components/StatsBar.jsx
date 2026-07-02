@@ -9,7 +9,7 @@ const stats = [
 
 export default function StatsBar() {
   return (
-    <section className="bg-gradient-to-r from-primary via-[#0a1638] to-primary font-sans">
+    <section className="bg-black font-sans">
       <div className="max-w-9xl">
         <StatsSection
           stats={stats}
@@ -17,7 +17,7 @@ export default function StatsBar() {
           separator={false}
           triggerOnView
           divider
-          dividerColor="rgba(30, 69, 255, 0.2)"
+          dividerColor="rgba(223, 255, 0, 0.2)"
           numberColor="#dfff00"
           labelColor="rgba(255, 255, 255, 0.7)"
           background="#000000"

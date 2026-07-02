@@ -61,7 +61,7 @@ export default function ContactPage() {
               <motion.li
                 key={item.label}
                 variants={fadeUp}
-                className="rounded-2xl border border-accent/10 bg-white px-5 py-6 shadow-[0_8px_30px_rgba(30,69,255,0.06)]"
+                className="rounded-2xl border border-accent/10 bg-white px-5 py-6 shadow-[0_8px_30px_rgba(223,255,0,0.06)]"
               >
                 <p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent/70">
                   {item.label}

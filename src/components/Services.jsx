@@ -27,7 +27,7 @@ export default function Services() {
   }))
 
   return (
-    <section id="services" className="bg-primary font-sans text-white">
+    <section id="services" className="bg-black font-sans text-white">
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-24">
         <motion.div
           className="mb-10 flex flex-col gap-6 sm:mb-12 sm:flex-row sm:items-end sm:justify-between"

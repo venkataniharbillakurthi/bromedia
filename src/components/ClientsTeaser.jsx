@@ -39,7 +39,7 @@ function ArrowRight({ className = '' }) {
 
 export default function ClientsTeaser() {
   return (
-    <section id="clients" className="bg-white font-sans">
+    <section id="clients" className="bg-black font-sans text-white">
       <div className="relative mx-auto max-w-7xl px-6 pt-16 lg:px-8 lg:pt-24">
       
 
@@ -58,13 +58,13 @@ export default function ClientsTeaser() {
           </motion.p>
           <motion.h2
             variants={fadeUp}
-            className="mt-4 text-3xl font-bold tracking-tight text-primary sm:text-4xl"
+            className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl"
           >
             {clientsTeaserIntro.headline}
           </motion.h2>
           <motion.p
             variants={fadeUp}
-            className="mt-4 text-base leading-relaxed text-primary/70 sm:text-lg"
+            className="mt-4 text-base leading-relaxed text-white/70 sm:text-lg"
           >
             {clientsTeaserIntro.description}
           </motion.p>
@@ -72,7 +72,7 @@ export default function ClientsTeaser() {
           <motion.div variants={fadeUp} className="mt-6 md:hidden">
             <Link
               to={routes.ourWork}
-              className="group inline-flex items-center gap-2 text-sm font-semibold text-primary transition hover:text-accent"
+              className="group inline-flex items-center gap-2 text-sm font-semibold text-white transition hover:text-accent"
             >
               See All Our Work
               <ArrowRight className="transition group-hover:translate-x-1" />
@@ -91,10 +91,10 @@ export default function ClientsTeaser() {
             to={routes.ourWork}
             className="group inline-flex items-center gap-3"
           >
-            <span className="whitespace-nowrap text-sm font-semibold tracking-wide text-primary/25 transition group-hover:text-accent lg:text-base">
+            <span className="whitespace-nowrap text-sm font-semibold tracking-wide text-white/40 transition group-hover:text-accent lg:text-base">
               See All Our Work
             </span>
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-primary/20 bg-white text-primary/40 transition group-hover:border-accent/30 group-hover:bg-accent/10 group-hover:text-accent">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/50 transition group-hover:border-accent/30 group-hover:bg-accent/10 group-hover:text-accent">
               <ArrowRight className="transition group-hover:translate-x-0.5" />
             </span>
           </Link>
@@ -102,13 +102,17 @@ export default function ClientsTeaser() {
       </div>
 
       <motion.div
-        className="mt-10 w-full pb-16 lg:mt-14 lg:pb-24"
+        className="mt-10 w-full pb-8 lg:mt-14 lg:pb-10"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={viewport}
         transition={spring}
       >
-        <ClientsCarouselFromData items={clientsTeaser} />
+        <ClientsCarouselFromData
+          items={clientsTeaser}
+          shellBackground="#141414"
+          shellBorderColor="rgba(255, 255, 255, 0.1)"
+        />
       </motion.div>
     </section>
   )

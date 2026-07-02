@@ -175,6 +175,8 @@ export function ClientsCarouselFromData({
   items = [],
   className = '',
   style,
+  shellBackground = SHELL_BG,
+  shellBorderColor = SHELL_BORDER,
   ...props
 }) {
   const brands = items.map((item) => ({
@@ -191,8 +193,8 @@ export function ClientsCarouselFromData({
       <div
         className="overflow-hidden rounded-2xl border px-4 py-4 sm:px-5 sm:py-5"
         style={{
-          backgroundColor: SHELL_BG,
-          borderColor: SHELL_BORDER,
+          backgroundColor: shellBackground,
+          borderColor: shellBorderColor,
           boxShadow: 'none',
         }}
       >
