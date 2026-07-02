@@ -21,7 +21,7 @@ export default function Testimonials() {
             sectionIntroText={testimonialsIntro.description}
             compact
             cardBackground="#f4f4f5"
-            labelColor="rgb(134, 134, 139)"
+            labelColor="rgba(30, 69, 255, 0.75)"
             introColor="rgb(81, 81, 84)"
             headlineColor="#000000"
             statementColor="#515154"

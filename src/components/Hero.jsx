@@ -21,7 +21,7 @@ export default function Hero() {
         backgroundColor="#ffffff"
         liquidEtherColors={['#ffffff', '#ffffff', '#ffffff/1.05']}
       >
-        <div className="absolute inset-x-0 top-[56%] flex flex-col items-center px-6 text-center sm:top-[54%]">
+      {/*}  <div className="absolute inset-x-0 top-[56%] flex flex-col items-center px-6 text-center sm:top-[54%]">
           <div className="pointer-events-auto mt-6 flex flex-col items-center gap-5 sm:mt-8 sm:flex-row sm:gap-6">
             <SmoothThreeDButton
               text="Start a project"
@@ -38,7 +38,7 @@ export default function Hero() {
               buttonHeight={64}
             />
           </div>
-        </div>
+        </div>*/}
       </ScrollZoomReveal>
     </section>
   )

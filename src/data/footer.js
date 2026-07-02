@@ -1,14 +1,17 @@
 import { navLinks, routes } from './navigation'
-
-const LOGO_URL =
-  'https://res.cloudinary.com/dvruqkpqk/image/upload/v1782134190/BrosMedia_Logo_1_nxpara.png'
+import { clientsTeaser } from './clientsTeaser'
 
 export const footerIntro = {
-  logoSrc: LOGO_URL,
-  logoAlt: 'Brosmedia',
   companyName: 'Brosmedia',
   address: 'Hyderabad, Telangana, India',
 }
+
+export const footerRevealImages = clientsTeaser
+  .filter((client) => client.logo)
+  .map((client) => ({
+    src: client.logo,
+    alt: client.name,
+  }))
 
 export const footerLinks = navLinks
 

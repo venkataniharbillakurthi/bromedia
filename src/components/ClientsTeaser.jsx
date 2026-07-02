@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { FilmstripFromClients } from '../framer/filmstrip.jsx'
+import { ClientsCarouselFromData } from '../framer/clients_carousel.jsx'
 import { clientsTeaser, clientsTeaserIntro } from '../data/clientsTeaser'
 import { routes } from '../data/navigation'
 
@@ -39,7 +39,7 @@ function ArrowRight({ className = '' }) {
 
 export default function ClientsTeaser() {
   return (
-    <section id="clients" className="bg-[#f4f4f5] font-sans">
+    <section id="clients" className="bg-white font-sans">
       <div className="relative mx-auto max-w-7xl px-6 pt-16 lg:px-8 lg:pt-24">
       
 
@@ -94,7 +94,7 @@ export default function ClientsTeaser() {
             <span className="whitespace-nowrap text-sm font-semibold tracking-wide text-primary/25 transition group-hover:text-accent lg:text-base">
               See All Our Work
             </span>
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-primary/10 bg-white text-primary/40 shadow-sm transition group-hover:border-accent/30 group-hover:bg-accent/10 group-hover:text-accent">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-primary/20 bg-white text-primary/40 transition group-hover:border-accent/30 group-hover:bg-accent/10 group-hover:text-accent">
               <ArrowRight className="transition group-hover:translate-x-0.5" />
             </span>
           </Link>
@@ -108,7 +108,7 @@ export default function ClientsTeaser() {
         viewport={viewport}
         transition={spring}
       >
-        <FilmstripFromClients items={clientsTeaser} speed={36} />
+        <ClientsCarouselFromData items={clientsTeaser} />
       </motion.div>
     </section>
   )
